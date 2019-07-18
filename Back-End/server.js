@@ -15,7 +15,7 @@ const corsOptions = {
 };
 
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 
 app.get('/weather', cors(corsOptions), getWeather);
