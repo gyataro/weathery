@@ -1,0 +1,25 @@
+{
+  "name": "weathery-backend",
+  "version": "1.0.0",
+  "description": "Weather forecast app backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "forecast",
+    "weather",
+    "web"
+  ],
+  "author": "gern-yataro",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
