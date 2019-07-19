@@ -3,8 +3,19 @@
 .hero {
     background: #4a8fe7;
     background-image: linear-gradient(to right bottom, #4a8fe7, #00a8f3, #00bef5, #00d3f0, #44e5e7);
-    height: 200px;
-    padding: 0px 20px 0px 20px;
+    height: auto;
+    padding: 0px 40px 30px 40px;
+    overflow: hidden;
+}
+
+.hero .container-left {
+    width: 100%;
+    float: left;
+}
+
+.hero .container-right {
+    width: 100%;
+    float: left;
 }
 
 .hero .location {
@@ -19,4 +30,38 @@
     color: white;
     font-size: 1.3em;
     font-family: 'Lato', sans-serif;
+}
+
+.hero .temperature {
+    font-size: 4em;
+    margin: 50px 15px 0px 0px;
+    float: left;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+.hero .temperature-format {
+    margin-top: -30px;
+    font-size: 0.6em;
+}
+
+.hero .weather-icon {
+    margin-top: 40px;
+    font-size: 6em;
+    color: white;
+    float: right;
+}
+
+@media only screen and (min-width: 768px) {
+    .hero .container-left {
+        width: 50%;
+    }
+    
+    .hero .container-right {
+        width: 50%;
+    }
+
+    .hero .temperature {
+        float: right;
+    }
 }
