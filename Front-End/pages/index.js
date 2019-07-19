@@ -1,8 +1,11 @@
-import Layout from '../components/MyLayout.js';
+import Layout from '../components/Layout.js';
+import WeatherHero from '../components/WeatherHero.js';
 import Link from 'next/link';
+import Head from 'next/head';
 
 //CSS file
-import "../styles/styles.css"
+import "../styles/main.css";
+import "../styles/hero.css";
 
 const PostLink = props => (
   <li>
@@ -16,10 +19,7 @@ export default function Blog() {
   return (
     <Layout>
       <div className='container'>
-        <div className='col-12'>
-          <div className='card hero'>
-          </div>
-        </div>
+        <WeatherHero />
         <div className='col-7'>
           <div className='card weekly'>
           </div>
