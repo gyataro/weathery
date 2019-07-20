@@ -4,8 +4,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 //CSS file
-import "../styles/main.css";
-import "../styles/hero.css";
+import "../styles/main.scss";
 
 const PostLink = props => (
   <li>

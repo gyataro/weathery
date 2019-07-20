@@ -1,5 +1,8 @@
-import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
+//Icons module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+//Weather icons
+import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherHero(props){
   const currentDate = new Date();
@@ -51,9 +54,19 @@ export default function WeatherHero(props){
         <div className='container-right'>
           <FontAwesomeIcon className='weather-icon' icon={faCloudSun} />
           <p className='temperature'><b>23<sup className='temperature-format'>°</sup></b></p>
-          
+
         </div>
       </div>
+
+      <style jsx global>{`
+      .hero {
+        background: #4a8fe7;
+        background-image: linear-gradient(to right bottom, #4a8fe7, #00a8f3, #00bef5, #00d3f0, #44e5e7);
+        height: auto;
+        padding: 0px 40px 30px 40px;
+        overflow: hidden;
+      }
+      `}</style>
     </div>
   )
 }
