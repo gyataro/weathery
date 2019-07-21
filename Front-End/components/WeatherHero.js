@@ -22,13 +22,13 @@ export default function WeatherHero(props){
   ];
 
   const weekName = [
+    'Sunday',
     'Monday', 
     'Tuesday', 
     'Wednesday', 
     'Thursday', 
-    'Friday', 
-    'Saturday', 
-    'Sunday'
+    'Friday',
+    'Saturday'
   ];
 
   const weatherIcons = [
@@ -52,7 +52,7 @@ export default function WeatherHero(props){
           <p className='date'>{weekName[currentDate.getDay()]}, &nbsp;{currentDate.getUTCDate()} {monthName[currentDate.getUTCMonth()]}</p>
         </div>
         <div className='container-right'>
-          <FontAwesomeIcon className='weather-icon' icon={faCloudSun} />
+          <FontAwesomeIcon alt='icon' className='weather-icon' icon={faCloudSun} />
           <p className='temperature'><b>23<sup className='temperature-format'>°</sup></b></p>
 
         </div>
@@ -62,9 +62,6 @@ export default function WeatherHero(props){
       .hero {
         background: #4a8fe7;
         background-image: linear-gradient(to right bottom, #4a8fe7, #00a8f3, #00bef5, #00d3f0, #44e5e7);
-        height: auto;
-        padding: 0px 40px 30px 40px;
-        overflow: hidden;
       }
       `}</style>
     </div>
