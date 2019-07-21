@@ -1,5 +1,6 @@
 import Layout from '../components/Layout.js';
 import WeatherHero from '../components/WeatherHero.js';
+import WeatherInfo from '../components/WeatherInfo.js';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -19,10 +20,7 @@ export default function Blog() {
     <Layout>
       <div className='container'>
         <WeatherHero />
-        <div className='col-7'>
-          <div className='card weekly'>
-          </div>
-        </div>
+        <WeatherInfo />
         <div className='col-5'>
           <div className='card'>
           </div>
