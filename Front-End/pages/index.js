@@ -1,6 +1,7 @@
 import Layout from '../components/Layout.js';
 import WeatherHero from '../components/WeatherHero.js';
 import WeatherInfo from '../components/WeatherInfo.js';
+import WeatherWeekly from '../components/WeatherWeekly.js';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -16,15 +17,17 @@ const PostLink = props => (
 );
 
 export default function Blog() {
+  const currentDate = new Date();
+
   return (
     <Layout>
       <div className='container'>
-        <WeatherHero />
-        <WeatherInfo />
-        <div className='col-5'>
-          <div className='card'>
-          </div>
-        </div>
+        <WeatherHero date={currentDate}/>
+        
+        <WeatherInfo date={currentDate}/>
+
+        <WeatherWeekly date={currentDate}/>
+        
         <div className='col-12'>
           <div className='card'>
           </div>
