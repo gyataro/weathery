@@ -5,7 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherHero(props){
-  const currentDate = new Date();
+
+  const {date} = props;
+
   const monthName = [
     'January', 
     'February', 
@@ -49,7 +51,7 @@ export default function WeatherHero(props){
       <div className='card hero'>
         <div className='container-left'>
           <h1 className='location'>Kuala Lumpur</h1>
-          <p className='date'>{weekName[currentDate.getDay()]}, &nbsp;{currentDate.getUTCDate()} {monthName[currentDate.getUTCMonth()]}</p>
+          <p className='date'>{weekName[date.getDay()]}, &nbsp;{date.getUTCDate()} {monthName[date.getUTCMonth()]}</p>
         </div>
         <div className='container-right'>
           <FontAwesomeIcon alt='icon' className='weather-icon' icon={faCloudSun} />
