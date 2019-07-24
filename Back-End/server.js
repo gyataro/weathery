@@ -9,7 +9,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 const corsOptions = {
-    origin: /\.darksky\.net$/,
+    origin: 'https://client-weathery.netlify.com',
     //For legacy systems that choke on 204
     optionsSuccessStatus: 200 
 };
