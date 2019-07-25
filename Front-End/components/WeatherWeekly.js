@@ -5,14 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faCalendarWeek,
   faCloudSun,
+  faCloudMoon,
+  faCloud,
   faSun,
-  faMoon
+  faMoon,
+  faSnowflake,
+  faSmog,
+  faCloudShowersHeavy,
+  faWind
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherWeekly(props){
-  const {date} = props;
-  const sunrise = '7:21 am';
-  const sunset = '6:35 pm';
+  const {
+    date,
+    sunrise,
+    sunset,
+    weekly
+  } = props;
+
+  const infoSunrise = new Date(sunrise).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+  const infoSunset = new Date(sunset).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+
   const weekName = [
     'Sun',
     'Mon', 
@@ -23,18 +36,31 @@ export default function WeatherWeekly(props){
     'Sat'
   ];
 
+  const weatherIcons = {
+    'clear-day': faSun,
+    'clear-night': faMoon,
+    'rain': faCloudShowersHeavy,
+    'snow': faSnowflake,
+    'sleet': faSnowflake,
+    'wind': faWind,
+    'fog': faSmog,
+    'cloudy': faCloud,
+    'partly-cloudy-day': faCloudSun,
+    'partly-cloudy-night': faCloudMoon
+  };
+
   return (
     <div className='col-5'>
       <div className='card sun'>
         <div className='sunrise'>
           <h3><FontAwesomeIcon className='' icon={faSun} /> &nbsp;Sunrise: 
-            <span>{sunrise}</span>
+            <span>{infoSunrise}</span>
           </h3>
         </div>
 
         <div className='sunset'>
           <h3><FontAwesomeIcon className='' icon={faMoon} /> &nbsp;Sunset: 
-            <span>{sunset}</span>
+            <span>{infoSunset}</span>
           </h3>
         </div>
       </div>

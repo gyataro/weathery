@@ -2,11 +2,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 //Weather icons
-import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faCloudSun,
+  faCloudMoon,
+  faCloud,
+  faSun,
+  faMoon,
+  faSnowflake,
+  faSmog,
+  faCloudShowersHeavy,
+  faWind
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherHero(props){
 
-  const {date} = props;
+  const {
+    date,
+    currently,
+    timezone
+  } = props;
 
   const monthName = [
     'January', 
@@ -33,29 +47,33 @@ export default function WeatherHero(props){
     'Saturday'
   ];
 
-  const weatherIcons = [
-    'clear-day',
-    'clear-night',
-    'rain',
-    'snow',
-    'sleet',
-    'wind',
-    'fog',
-    'cloudy',
-    'partly-cloudy-day',
-    'partly-cloudy-night'
-  ]
+  const weatherIcons = {
+    'clear-day': faSun,
+    'clear-night': faMoon,
+    'rain': faCloudShowersHeavy,
+    'snow': faSnowflake,
+    'sleet': faSnowflake,
+    'wind': faWind,
+    'fog': faSmog,
+    'cloudy': faCloud,
+    'partly-cloudy-day': faCloudSun,
+    'partly-cloudy-night': faCloudMoon
+  };
+
+  const heroLocation = timezone.substr(timezone.indexOf('/')+1).replace('_', ' ');
+  const heroTemperature = Math.round(currently.temperature);
+  const heroIcon = weatherIcons[(currently.icon) || 'clear-day'];
 
   return (
     <div className='col-12'>
       <div className='card hero'>
         <div className='container-left'>
-          <h1 className='location'>Kuala Lumpur</h1>
+          <h1 className='location'>{heroLocation}</h1>
           <p className='date'>{weekName[date.getDay()]}, &nbsp;{date.getUTCDate()} {monthName[date.getUTCMonth()]}</p>
         </div>
         <div className='container-right'>
-          <FontAwesomeIcon alt='icon' className='weather-icon' icon={faCloudSun} />
-          <p className='temperature'><b>23<sup className='temperature-format'>°</sup></b></p>
+          <FontAwesomeIcon alt='icon' className='weather-icon' icon={heroIcon} />
+          <p className='temperature'><b>{heroTemperature}<sup className='temperature-format'>°</sup></b></p>
 
         </div>
       </div>
