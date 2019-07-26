@@ -19,13 +19,13 @@ export default function WeatherInfo(props){
     summary
   } = props;
   
-  const infoSummary = summary || 'N/A';
-  const infoApparentTemperature = currently.apparentTemperature + ' °C' || 'N/A';
-  const infoHumidity = (currently.humidity*100) + ' %' || 'N/A';
-  const infoPressure = (currently.pressure/1013.25).toFixed(2) + ' atm' || 'N/A';
-  const infoDewPoint = currently.dewPoint + ' °C' || 'N/A';
-  const infoWindSpeed = currently.windSpeed + ' m/s' || 'N/A';
-  const infoVisibility = currently.visibility + ' km' || 'N/A';
+  const infoSummary = summary;
+  const infoApparentTemperature = currently.apparentTemperature + ' °C';
+  const infoHumidity = (currently.humidity*100).toFixed() + ' %';
+  const infoPressure = (currently.pressure/1013.25).toFixed(2) + ' atm';
+  const infoDewPoint = currently.dewPoint + ' °C';
+  const infoWindSpeed = currently.windSpeed + ' m/s';
+  const infoVisibility = currently.visibility + ' km';
 
   return(
     <div className='col-7'>
