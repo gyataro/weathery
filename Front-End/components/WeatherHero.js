@@ -1,18 +1,5 @@
-//Icons module
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-//Weather icons
-import { 
-  faCloudSun,
-  faCloudMoon,
-  faCloud,
-  faSun,
-  faMoon,
-  faSnowflake,
-  faSmog,
-  faCloudShowersHeavy,
-  faWind
-} from '@fortawesome/free-solid-svg-icons';
+//Icons display utility
+import WeatherIcon from '../utils/WeatherIcon';
 
 export default function WeatherHero(props){
 
@@ -47,22 +34,8 @@ export default function WeatherHero(props){
     'Saturday'
   ];
 
-  const weatherIcons = {
-    'clear-day': faSun,
-    'clear-night': faMoon,
-    'rain': faCloudShowersHeavy,
-    'snow': faSnowflake,
-    'sleet': faSnowflake,
-    'wind': faWind,
-    'fog': faSmog,
-    'cloudy': faCloud,
-    'partly-cloudy-day': faCloudSun,
-    'partly-cloudy-night': faCloudMoon
-  };
-
   const heroLocation = timezone.substr(timezone.indexOf('/')+1).replace('_', ' ');
   const heroTemperature = Math.round(currently.temperature);
-  const heroIcon = weatherIcons[(currently.icon) || 'clear-day'];
 
   return (
     <div className='col-12'>
@@ -72,7 +45,7 @@ export default function WeatherHero(props){
           <p className='date'>{weekName[date.getDay()]}, &nbsp;{date.getUTCDate()} {monthName[date.getUTCMonth()]}</p>
         </div>
         <div className='container-right'>
-          <FontAwesomeIcon alt='icon' className='weather-icon' icon={heroIcon} />
+          <WeatherIcon icon={currently.icon} class='weather-icon'/>
           <p className='temperature'><b>{heroTemperature}<sup className='temperature-format'>°</sup></b></p>
 
         </div>

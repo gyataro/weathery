@@ -1,16 +1,5 @@
-//Icons module
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-//Weather icons
-import { 
-  faInfoCircle,
-  faTemperatureHigh,
-  faTint,
-  faEye,
-  faPaperPlane,
-  faTachometerAlt,
-  faChartArea
-} from '@fortawesome/free-solid-svg-icons';
+//Icon display utility
+import Icon from '../utils/DisplayIcon';
 
 export default function WeatherInfo(props){
 
@@ -30,31 +19,31 @@ export default function WeatherInfo(props){
   return(
     <div className='col-7'>
       <div className='card info'>
-        <h3><FontAwesomeIcon className='' icon={faInfoCircle} /> &nbsp;Weather Info</h3>
+        <h3><Icon className='' icon='info' /> &nbsp;Weather Info</h3>
         <p className='summary'>{infoSummary}</p>
         <div className="flex-container">
           <div className='flex-item'>
-            <p className='title'><FontAwesomeIcon className='' icon={faTemperatureHigh} /> &nbsp;Feels-like</p>
+            <p className='title'><Icon class='' icon='feelsLike' /> &nbsp;Feels-like</p>
             <p className='desc'>{infoApparentTemperature}</p>
           </div>
           <div className='flex-item'>
-            <p className='title'><FontAwesomeIcon className='' icon={faTint} /> &nbsp;Humidity</p>
+            <p className='title'><Icon className='' icon='humidity' /> &nbsp;Humidity</p>
             <p className='desc'>{infoHumidity}</p>
           </div>
           <div className='flex-item'>
-            <p className='title'><FontAwesomeIcon className='' icon={faTachometerAlt} /> &nbsp;Pressure</p>
+            <p className='title'><Icon class='' icon='pressure' /> &nbsp;Pressure</p>
             <p className='desc'>{infoPressure}</p>
           </div>
           <div className='flex-item'>
-            <p className='title'><FontAwesomeIcon className='' icon={faChartArea} /> &nbsp;Dew Point</p>
+            <p className='title'><Icon class='' icon='dewPoint' /> &nbsp;Dew Point</p>
             <p className='desc'>{infoDewPoint}</p>
           </div>
           <div className='flex-item'>
-            <p className='title'><FontAwesomeIcon className='' icon={faPaperPlane} /> &nbsp;Wind Speed</p>
+            <p className='title'><Icon class='' icon='windSpeed' /> &nbsp;Wind Speed</p>
             <p className='desc'>{infoWindSpeed}</p>
           </div>
           <div className='flex-item'>
-            <p className='title'><FontAwesomeIcon className='' icon={faEye} /> &nbsp;Visibility</p>
+            <p className='title'><Icon class='' icon='visibility' /> &nbsp;Visibility</p>
             <p className='desc'>{infoVisibility}</p>
           </div>
         </div>

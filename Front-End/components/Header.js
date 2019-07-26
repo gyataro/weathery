@@ -11,7 +11,7 @@ export default function Header() {
         </li>
         <li>
         <Link href="/about">
-            <a>About Page</a>
+            <a>About</a>
           </Link>
         </li>
       </ul>
