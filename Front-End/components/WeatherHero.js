@@ -1,6 +1,9 @@
 //Icons display utility
 import WeatherIcon from '../utils/WeatherIcon';
 
+//Date name utility
+import * as WeatherDate from '../utils/WeatherDate';
+
 export default function WeatherHero(props){
 
   const {
@@ -8,31 +11,6 @@ export default function WeatherHero(props){
     currently,
     timezone
   } = props;
-
-  const monthName = [
-    'January', 
-    'February', 
-    'March', 
-    'April', 
-    'May', 
-    'June', 
-    'July', 
-    'Auguest',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
-
-  const weekName = [
-    'Sunday',
-    'Monday', 
-    'Tuesday', 
-    'Wednesday', 
-    'Thursday', 
-    'Friday',
-    'Saturday'
-  ];
 
   const heroLocation = timezone.substr(timezone.indexOf('/')+1).replace('_', ' ');
   const heroTemperature = Math.round(currently.temperature);
@@ -42,7 +20,7 @@ export default function WeatherHero(props){
       <div className='card hero'>
         <div className='container-left'>
           <h1 className='location'>{heroLocation}</h1>
-          <p className='date'>{weekName[date.getDay()]}, &nbsp;{date.getUTCDate()} {monthName[date.getUTCMonth()]}</p>
+          <p className='date'>{WeatherDate.getWeekName(date)}, &nbsp;{WeatherDate.getUTCDate(date)} {WeatherDate.getMonthName(date)}</p>
         </div>
         <div className='container-right'>
           <WeatherIcon icon={currently.icon} class='weather-icon'/>

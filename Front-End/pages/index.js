@@ -1,13 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 
 import Layout from '../components/Layout.js';
 import WeatherHero from '../components/WeatherHero.js';
 import WeatherInfo from '../components/WeatherInfo.js';
 import WeatherWeekly from '../components/WeatherWeekly.js';
-import axios from 'axios';
 
 //CSS file
 import "../styles/main.scss";
+
+//Icon display utility
+import '../utils/DisplayIcon';
 
 class Dashboard extends React.Component {
 
@@ -15,6 +18,7 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       loading: true,
+      error: false,
       currentDate: new Date(),
       currentLat: 51.5074,
       currentLong: 0.1278,
@@ -51,17 +55,22 @@ class Dashboard extends React.Component {
           data: {}
         })
         .then(res => {
-          console.log(res.data);
-          this.setState({
-            loading: false,
-            weatherSummary: ''.concat(res.data.weatherData.currently.summary, ' | ', res.data.weatherData.daily.summary),
-            weatherSunrise: res.data.weatherData.daily.data[1].sunriseTime*1000,
-            weatherSunset: res.data.weatherData.daily.data[1].sunsetTime*1000,
-            weatherCurrently: res.data.weatherData.currently,
-            weatherWeekly: res.data.weatherData.daily.data,
-            weatherTimezone: res.data.weatherData.timezone
-          })
-          console.log(this.state.weatherSummary, this.state.weatherSunrise, this.state.weatherSunset);
+          if(res.data.error){
+            this.setState({
+              loading: false,
+              error: true
+            })
+          } else {
+            this.setState({
+              loading: false,
+              weatherSummary: ''.concat(res.data.weatherData.currently.summary, ' | ', res.data.weatherData.daily.summary),
+              weatherSunrise: res.data.weatherData.daily.data[1].sunriseTime*1000,
+              weatherSunset: res.data.weatherData.daily.data[1].sunsetTime*1000,
+              weatherCurrently: res.data.weatherData.currently,
+              weatherWeekly: res.data.weatherData.daily.data,
+              weatherTimezone: res.data.weatherData.timezone
+            })
+          }
         })
     });
 
@@ -70,6 +79,7 @@ class Dashboard extends React.Component {
   render() {
     const {
       loading,
+      error,
       currentDate,
       weatherSummary,
       weatherSunrise,
@@ -82,6 +92,13 @@ class Dashboard extends React.Component {
     return (loading) ? (
       <Layout>
         <div className='loader'></div>
+      </Layout>
+    ) : (error) ? (
+      <Layout>
+        <div className='error'>
+          <Icon class='' icon='error' />
+          <p>An error has occured, please try again</p>
+        </div>
       </Layout>
     ) : (
       <Layout>

@@ -2,6 +2,9 @@
 import WeatherIcon from '../utils/WeatherIcon';
 import Icon from '../utils/DisplayIcon';
 
+//Date name utility
+import * as WeatherDate from '../utils/WeatherDate';
+
 export default function WeatherWeekly(props){
   const {
     date,
@@ -10,8 +13,8 @@ export default function WeatherWeekly(props){
     weekly
   } = props;
 
-  const infoSunrise = new Date(sunrise).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
-  const infoSunset = new Date(sunset).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+  const infoSunrise = WeatherDate.getLocalTime(new Date(sunrise));
+  const infoSunset = WeatherDate.getLocalTime(new Date(sunset));
   const infoWeeklyTemp = [];
 
   //In the array, values for index 0, 1 are yesterday and today's weather, which isn't needed
@@ -24,18 +27,22 @@ export default function WeatherWeekly(props){
     });
   }
 
-  const weekName = [
-    'Sun',
-    'Mon', 
-    'Tue', 
-    'Wed', 
-    'Thur', 
-    'Fri',
-    'Sat'
-  ];
+  const weeklyElements = [];
+
+  for(var j=0; j < infoWeeklyTemp.length; j++){
+    weeklyElements.push(
+      <div className='flex-item'>
+        <p className='date'>{WeatherDate.getPartialWeekName(date, j+1)}</p>
+        <WeatherIcon class='weather' icon={infoWeeklyTemp[j].icon} />
+        <p className='temp-high'>{infoWeeklyTemp[j].high}</p>
+        <p className='temp-low'>{infoWeeklyTemp[j].low}</p>
+      </div>
+    );
+  }
 
   return (
     <div className='col-5'>
+
       <div className='card sun'>
         <div className='sunrise'>
           <h3><Icon class='' icon='sunrise' /> &nbsp;Sunrise: 
@@ -55,49 +62,10 @@ export default function WeatherWeekly(props){
       <div className='card weekly'>
         <h3><Icon className='' icon='weekly' /> &nbsp;Weekly Forecast</h3>
         <div className="flex-container">
-          <div className='flex-item'>
-            <p className='date'>{weekName[(date.getDay()+1)%7]}</p>
-            <WeatherIcon class='weather' icon={infoWeeklyTemp[0].icon} />
-            <p className='temp-high'>{infoWeeklyTemp[0].high}</p>
-            <p className='temp-low'>{infoWeeklyTemp[0].low}</p>
-          </div>
-
-          <div className='flex-item'>
-            <p className='date'>{weekName[(date.getDay()+2)%7]}</p>
-            <WeatherIcon class='weather' icon={infoWeeklyTemp[1].icon} />
-            <p className='temp-high'>{infoWeeklyTemp[1].high}</p>
-            <p className='temp-low'>{infoWeeklyTemp[1].low}</p>
-          </div>
-
-          <div className='flex-item'>
-            <p className='date'>{weekName[(date.getDay()+3)%7]}</p>
-            <WeatherIcon class='weather' icon={infoWeeklyTemp[2].icon} />
-            <p className='temp-high'>{infoWeeklyTemp[2].high}</p>
-            <p className='temp-low'>{infoWeeklyTemp[2].low}</p>
-          </div>
-
-          <div className='flex-item'>
-            <p className='date'>{weekName[(date.getDay()+4)%7]}</p>
-            <WeatherIcon class='weather' icon={infoWeeklyTemp[3].icon} />
-            <p className='temp-high'>{infoWeeklyTemp[3].high}</p>
-            <p className='temp-low'>{infoWeeklyTemp[3].low}</p>
-          </div>
-
-          <div className='flex-item'>
-            <p className='date'>{weekName[(date.getDay()+5)%7]}</p>
-            <WeatherIcon class='weather' icon={infoWeeklyTemp[4].icon} />
-            <p className='temp-high'>{infoWeeklyTemp[4].high}</p>
-            <p className='temp-low'>{infoWeeklyTemp[4].low}</p>
-          </div>
-
-          <div className='flex-item'>
-            <p className='date'>{weekName[(date.getDay()+6)%7]}</p>
-            <WeatherIcon class='weather' icon={infoWeeklyTemp[5].icon} />
-            <p className='temp-high'>{infoWeeklyTemp[5].high}</p>
-            <p className='temp-low'>{infoWeeklyTemp[5].low}</p>
-          </div>
+          {weeklyElements}
         </div>  
       </div>
+
     </div>
   )
 }
