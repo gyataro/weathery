@@ -5,6 +5,7 @@ import Layout from '../components/Layout.js';
 import WeatherHero from '../components/WeatherHero.js';
 import WeatherInfo from '../components/WeatherInfo.js';
 import WeatherWeekly from '../components/WeatherWeekly.js';
+import WeatherSearch from '../components/WeatherSearch.js';
 
 //CSS file
 import "../styles/main.scss";
@@ -27,12 +28,57 @@ class Dashboard extends React.Component {
       weatherWeekly: '',
       weatherSunrise: '',
       weatherSunset: '',
-      weatherTimezone: ''
+      weatherTimezone: '',
+      searchData: {}
     };
   }
 
-  componentDidMount() {
+  getWeather = (lat, long) => {
+    let weatherUrl = ''.concat('https://api-weathery.herokuapp.com/weather?lat=', lat, '&long=', long);
+    axios({
+      method: 'get',
+      url: weatherUrl,
+      responseType: 'json',
+      data: {}
+    })
+    .then(res => {
+      if(res.data.error){
+        this.setState({
+          loading: false,
+          error: true
+        })
+      } else {
+        this.setState({
+          loading: false,
+          weatherSummary: ''.concat(res.data.weatherData.currently.summary, ' | ', res.data.weatherData.daily.summary),
+          weatherSunrise: res.data.weatherData.daily.data[1].sunriseTime*1000,
+          weatherSunset: res.data.weatherData.daily.data[1].sunsetTime*1000,
+          weatherCurrently: res.data.weatherData.currently,
+          weatherWeekly: res.data.weatherData.daily.data,
+          weatherTimezone: (!this.state.searchData.hasOwnProperty('hit'))? (
+            res.data.weatherData.timezone
+          ) : (
+            (this.state.searchData.hit.locale_names[0])? this.state.searchData.hit.locale_names[0] : res.data.weatherData.timezone
+          )
+        })
+      }
+    })
+  }
 
+  searchCallback = (searchReturnData) => {
+    this.setState({
+      loading: true,
+      searchData: searchReturnData
+    });
+    console.log('index.js received data', searchReturnData);
+    this.getWeather(searchReturnData.latlng.lat, searchReturnData.latlng.lng)
+    this.setState({
+      currentLat: searchReturnData.latlng.lat,
+      currentLong: searchReturnData.latlng.lng
+    });
+  }
+
+  componentDidMount() {
     var geoDataPromise = new Promise(function(resolve, reject) {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -46,34 +92,9 @@ class Dashboard extends React.Component {
         currentLat: pos.lat.toFixed(4),
         currentLong: pos.long.toFixed(4)
       });
-        
-        let weatherUrl = ''.concat('https://api-weathery.herokuapp.com/weather?lat=', this.state.currentLat, '&long=', this.state.currentLong);
-        axios({
-          method: 'get',
-          url: weatherUrl,
-          responseType: 'json',
-          data: {}
-        })
-        .then(res => {
-          if(res.data.error){
-            this.setState({
-              loading: false,
-              error: true
-            })
-          } else {
-            this.setState({
-              loading: false,
-              weatherSummary: ''.concat(res.data.weatherData.currently.summary, ' | ', res.data.weatherData.daily.summary),
-              weatherSunrise: res.data.weatherData.daily.data[1].sunriseTime*1000,
-              weatherSunset: res.data.weatherData.daily.data[1].sunsetTime*1000,
-              weatherCurrently: res.data.weatherData.currently,
-              weatherWeekly: res.data.weatherData.daily.data,
-              weatherTimezone: res.data.weatherData.timezone
-            })
-          }
-        })
+      
+      this.getWeather(this.state.currentLat, this.state.currentLong);
     });
-
   }
 
   render() {
@@ -91,7 +112,12 @@ class Dashboard extends React.Component {
 
     return (loading) ? (
       <Layout>
-        <div className='loader'></div>
+        <div className='container'>
+          <WeatherSearch 
+            searchCallback={this.searchCallback}
+          />
+          <div className='loader'></div>
+        </div>
       </Layout>
     ) : (error) ? (
       <Layout>
@@ -103,6 +129,10 @@ class Dashboard extends React.Component {
     ) : (
       <Layout>
         <div className='container'>
+          <WeatherSearch 
+            searchCallback={this.searchCallback}
+          />
+          
           <WeatherHero 
             date={currentDate} 
             currently={weatherCurrently}
