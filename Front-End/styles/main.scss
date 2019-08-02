@@ -3,6 +3,7 @@
 @import './hero.scss';
 @import './info.scss';
 @import './weekly.scss';
+@import './search.scss';
 
 /* https://coolors.co/73fbd3-44e5e7-59d2fe-4a8fe7-5c7aff */
 /* Include the padding and border in an element's total width and height */
@@ -11,30 +12,31 @@
     text-align: center;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 5px 0px 5px 0px;
-    overflow: hidden;
-    background-color: #4A8FE7;
-}
-  
-.navbar li {
-    float: left;
-}
-  
-.navbar li a {
-    display: block;
-    color: white;
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-  
-/* Change the link color to #111 (black) on hover */
-.navbar li a:hover {
-    background-color: #5b9ae9;
+.navbar {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 5px 0px 5px 0px;
+        overflow: hidden;
+        background-color: #1b68ca; 
+    }
+
+    li {
+        float: left;
+
+        a {
+            display: block;
+            color: white;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #5b9ae9;
+        }
+    }
 }
 
 body {
@@ -90,6 +92,11 @@ body {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
+
+    .navbar {
+        
+    }
+
 }
 
 /*Loading spinner*/
