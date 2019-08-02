@@ -47,7 +47,7 @@ export function getMonthName(date = new Date()){
     'May', 
     'June', 
     'July', 
-    'Auguest',
+    'August',
     'September',
     'October',
     'November',

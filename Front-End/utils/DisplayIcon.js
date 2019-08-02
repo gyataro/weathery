@@ -22,7 +22,11 @@ import {
     faMoon,
 
     //Error icon
-    faExclamationTriangle
+    faExclamationTriangle,
+
+    //Navbar icon
+    faCog,
+    faSearch
   } from '@fortawesome/free-solid-svg-icons';
 
   export default function WeatherIcon(props){
@@ -35,6 +39,10 @@ import {
 
         //Error icon
         'error': faExclamationTriangle,
+
+        //Navbar icon
+        'settings': faCog,
+        'search': faSearch,
 
         //Info icon
         'info': faInfoCircle,
