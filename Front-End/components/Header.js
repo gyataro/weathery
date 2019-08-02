@@ -1,17 +1,19 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import Icon from '../utils/DisplayIcon';
 
 export default function Header() {
   return (
     <div className='navbar'>
       <ul>
         <li>    
-          <Link href="https://github.com/Gern-Yataro/Weathery-Weather-App">
+          <Link href="/">
             <a>Weathery</a>
           </Link>
         </li>
-        <li>
-        <Link href="/about">
-            <a>About</a>
+
+        <li className='settings'>
+          <Link href="/settings">
+            <a><Icon class='' icon='settings' />&nbsp;&nbsp;Settings</a>
           </Link>
         </li>
       </ul>
