@@ -29,7 +29,19 @@ class Dashboard extends React.Component {
       weatherSunrise: '',
       weatherSunset: '',
       weatherTimezone: '',
-      searchData: {}
+      searchData: {},
+
+      //Settings state
+      isPersistent: false,
+      isImperial: true,
+      isLanguage: 'en',
+      isDark: false,
+      showInfo: true,
+      showSunTime: true,
+      showWeekly: true,
+      showGraph: false,
+      showUV: false,
+      showLife: false
     };
   }
 
@@ -62,6 +74,12 @@ class Dashboard extends React.Component {
           )
         })
       }
+    })
+  }
+
+  settingsCallback = (settingsReturnData) => {
+    this.setState({
+      
     })
   }
 
