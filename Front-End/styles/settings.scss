@@ -1,4 +1,5 @@
 #settings-title {
+    color: var(--font-color);
     font-family: 'Lato', sans-serif;
     font-size: 1.5em;
 }
@@ -36,6 +37,14 @@
         width: 70%;
     }
 }
+
+select {
+    margin: 5px 0 0 -20px;
+    padding: 4px;
+    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif;
+}
+
 
 @media only screen and (min-width: 768px) {
     #settings-title {

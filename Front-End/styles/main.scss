@@ -8,9 +8,43 @@
 
 /* https://coolors.co/73fbd3-44e5e7-59d2fe-4a8fe7-5c7aff */
 /* Include the padding and border in an element's total width and height */
+:root {
+    --primary-color: #1b68ca;
+    --secondary-color: #5b9ae9;
+    --font-color: black;
+    --bg-color: #eee;
+    --card-color: #fff;
+    --card-bg-color: #ededed;
+    --loader-color: #1b68ca;
+
+    --temp-high: red;
+    --temp-low: blue;
+}
+
+[data-theme="dark"] {
+    --primary-color: #000000;
+    --secondary-color: #607D8B;
+    --font-color: #eee;
+    --bg-color: #303030;
+    --card-color: #424242;
+    --card-bg-color: #424242;
+    --loader-color: #eee;
+
+    --temp-high: #FFD1D1;
+    --temp-low: #80FFFF;
+}
+
 * {
     box-sizing: border-box;
     text-align: center;
+}
+
+#hidden {
+    display: none;
+}
+
+#show {
+    display: block;
 }
 
 .navbar {
@@ -19,7 +53,7 @@
         margin: 0;
         padding: 5px 0px 5px 0px;
         overflow: hidden;
-        background-color: #1b68ca; 
+        background-color: var(--primary-color); 
     }
 
     li {
@@ -35,7 +69,7 @@
         }
 
         a:hover {
-            background-color: #5b9ae9;
+            background-color: var(--secondary-color);
         }
     }
 }
@@ -44,7 +78,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #eee;
+    background-color: var(--bg-color);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -56,12 +90,13 @@ body {
 }
     
 .card {
-    background-color: #fff;
-    background-image: linear-gradient(#ededed 1px, transparent 1px), linear-gradient(90deg, #ededed 1px, transparent 1px);
+    background-color: var(--card-color);
+    background-image: linear-gradient(var(--card-bg-color) 1px, transparent 1px), linear-gradient(90deg, var(--card-bg-color) 1px, transparent 1px);
     margin: 8px 8px 8px 8px;
     border-radius: 2px;
     overflow: auto;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    color: var(--font-color);
 }
 
 /* Mobile compatibility */
@@ -109,12 +144,12 @@ body {
     width: 11em;
     height: 11em;
     border-radius: 50%;
-    background: #4a8fe7;
-    background: -moz-linear-gradient(left, #4a8fe7 10%, rgba(74,143,231, 0) 42%);
-    background: -webkit-linear-gradient(left, #4a8fe7 10%, rgba(74,143,231, 0) 42%);
-    background: -o-linear-gradient(left, #4a8fe7 10%, rgba(74,143,231, 0) 42%);
-    background: -ms-linear-gradient(left, #4a8fe7 10%, rgba(74,143,231, 0) 42%);
-    background: linear-gradient(to right, #4a8fe7 10%, rgba(74,143,231, 0) 42%);
+    background: var(--loader-color);
+    background: -moz-linear-gradient(left, var(--loader-color) 10%, rgba(74,143,231, 0) 42%);
+    background: -webkit-linear-gradient(left, var(--loader-color) 10%, rgba(74,143,231, 0) 42%);
+    background: -o-linear-gradient(left, var(--loader-color) 10%, rgba(74,143,231, 0) 42%);
+    background: -ms-linear-gradient(left, var(--loader-color) 10%, rgba(74,143,231, 0) 42%);
+    background: linear-gradient(to right, var(--loader-color) 10%, rgba(74,143,231, 0) 42%);
     position: relative;
     -webkit-animation: load3 1.4s infinite linear;
     animation: load3 1.4s infinite linear;
@@ -126,7 +161,7 @@ body {
 .loader:before {
     width: 50%;
     height: 50%;
-    background: #4a8fe7;
+    background: var(--loader-color);
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;
@@ -135,7 +170,7 @@ body {
 }
 
 .loader:after {
-    background: #eee;
+    background: var(--bg-color);
     width: 75%;
     height: 75%;
     border-radius: 50%;
@@ -171,7 +206,7 @@ body {
 }
 
 .error {
-    color: #4a8fe7;
+    color: var(--primary-color);
     font-family: 'Lato', sans-serif;
     font-size: 1.2em;
     margin: auto;

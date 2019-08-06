@@ -57,11 +57,11 @@
         }
     
         .temp-high {
-            color: red;
+            color: var(--temp-high);
         }
 
         .temp-low {
-            color: blue;
+            color: var(--temp-low);
         }
     }
 }

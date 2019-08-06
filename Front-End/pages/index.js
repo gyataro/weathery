@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from "react";
 import axios from 'axios';
 
 import Layout from '../components/Layout.js';
@@ -13,13 +13,16 @@ import "../styles/main.scss";
 //Icon display utility
 import '../utils/DisplayIcon';
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
 
   constructor(props){
     super(props);
     this.state = {
+      //Application state
       loading: true,
       error: false,
+
+      //Weather data state
       currentDate: new Date(),
       currentLat: 51.5074,
       currentLong: 0.1278,
@@ -31,9 +34,9 @@ class Dashboard extends React.Component {
       weatherTimezone: '',
       searchData: {},
 
-      //Settings state
+      //User settings state
       isPersistent: false,
-      isImperial: true,
+      isMetric: true,
       isLanguage: 'en',
       isDark: false,
       showInfo: true,
@@ -46,7 +49,8 @@ class Dashboard extends React.Component {
   }
 
   getWeather = (lat, long) => {
-    let weatherUrl = ''.concat('https://api-weathery.herokuapp.com/weather?lat=', lat, '&long=', long);
+    let isMetricUnits = (localStorage.getItem('isMetric') === 'true')? 'si' : 'us';
+    let weatherUrl = ''.concat('https://api-weathery.herokuapp.com/weather?lat=', lat, '&long=', long, '&units=', isMetricUnits);
     axios({
       method: 'get',
       url: weatherUrl,
@@ -77,12 +81,6 @@ class Dashboard extends React.Component {
     })
   }
 
-  settingsCallback = (settingsReturnData) => {
-    this.setState({
-      
-    })
-  }
-
   searchCallback = (searchReturnData) => {
     this.setState({
       loading: true,
@@ -97,6 +95,30 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    const settingsArray = [
+      'isPersistent', 
+      'isMetric', 
+      'isLanguage',
+      'isDark',
+      'showInfo',
+      'showSunTime',
+      'showWeekly',
+      'showGraph',
+      'showUV',
+      'showLife'
+    ];
+    
+    for(let i = 0; i < settingsArray.length; i++){
+      let tempSetting = localStorage.getItem(settingsArray[i]);
+      if(tempSetting){
+        this.setState({ 
+          [settingsArray[i]]: (settingsArray[i] === 'isLanguage')? tempSetting : (tempSetting === 'true')
+        });
+      } else {
+          localStorage.setItem(settingsArray[i], this.state[settingsArray[i]]);
+      }
+    }
+
     var geoDataPromise = new Promise(function(resolve, reject) {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -116,6 +138,14 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    if (typeof window !== 'undefined') {
+      if(localStorage.getItem('isDark') === 'true'){
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
+
     const {
       loading,
       error,
@@ -125,7 +155,7 @@ class Dashboard extends React.Component {
       weatherSunset,
       weatherCurrently,
       weatherWeekly,
-      weatherTimezone
+      weatherTimezone,
     } = this.state;
 
     return (loading) ? (

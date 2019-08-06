@@ -11,8 +11,9 @@ class Settings extends Component {
   constructor() {
     super();
     this.state = { 
+      //Temporary state for settings page togglers only
       isPersistent: false,
-      isImperial: true,
+      isMetric: true,
       isLanguage: 'en',
       isDark: false,
       showInfo: true,
@@ -32,10 +33,9 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    // All settings except language
     const settingsArray = [
       'isPersistent', 
-      'isImperial', 
+      'isMetric', 
       'isLanguage',
       'isDark',
       'showInfo',
@@ -52,6 +52,8 @@ class Settings extends Component {
         this.setState({ 
           [settingsArray[i]]: (settingsArray[i] === 'isLanguage')? tempSetting : (tempSetting === 'true')
         });
+      } else {
+        localStorage.setItem(settingsArray[i], this.state[settingsArray[i]]);
       }
     }
   }
@@ -59,10 +61,16 @@ class Settings extends Component {
   settingsDropdownChange = (event) => {
     localStorage.setItem('isLanguage', event.target.value);
     this.setState({isLanguage: event.target.value});
-    console.log(this.state.isLanguage)
   }
 
   render(){
+    if (typeof window !== 'undefined') {
+      if(localStorage.getItem('isDark') === 'true'){
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
     const languages = ['en', 'es', 'zh', 'zh-tw', 'ja', 'ko', 'id'];
     const languageFull = ['English', 'Español', '简体中文', '繁體中文', '日本語', '한국어', 'Bahasa Melayu']
     const languageSelection = [];
@@ -81,10 +89,10 @@ class Settings extends Component {
               <ul>
                 <li>
                   <div className='container-70'>
-                    Use imperial units (celsius)
+                    Use metric units (celsius)
                   </div>
                   <div className='container-30'>
-                    <Toggle id='isImperial' checked={this.state.isImperial} settingsChangeCallback={this.settingsChangeCallback} />
+                    <Toggle id='isMetric' checked={this.state.isMetric} settingsChangeCallback={this.settingsChangeCallback} />
                   </div>
                 </li>
                 <li>

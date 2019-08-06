@@ -7,17 +7,23 @@ export default function WeatherInfo(props){
     currently,
     summary
   } = props;
+
+  //User settings
+  const showInfo = (localStorage.getItem('showInfo') === 'true')? 'show': 'hidden';
+  const isMetricTemp = (localStorage.getItem('isMetric') === 'true')? '°C' : '°F';
+  const isMetricDist = (localStorage.getItem('isMetric') === 'true')? 'km' : 'mile';
+  const isMetricSpeed = (localStorage.getItem('isMetric') === 'true')? 'm/s' : 'mph';
   
   const infoSummary = summary;
-  const infoApparentTemperature = currently.apparentTemperature + ' °C';
+  const infoApparentTemperature = currently.apparentTemperature + ' ' + isMetricTemp;
   const infoHumidity = (currently.humidity*100).toFixed() + ' %';
   const infoPressure = (currently.pressure/1013.25).toFixed(2) + ' atm';
-  const infoDewPoint = currently.dewPoint + ' °C';
-  const infoWindSpeed = currently.windSpeed + ' m/s';
-  const infoVisibility = currently.visibility + ' km';
+  const infoDewPoint = currently.dewPoint + ' ' + isMetricTemp;
+  const infoWindSpeed = currently.windSpeed + ' ' + isMetricSpeed;
+  const infoVisibility = currently.visibility + ' ' + isMetricDist;
 
   return(
-    <div className='col-7'>
+    <div className='col-7' id={showInfo}>
       <div className='card info'>
         <h3><Icon className='' icon='info' /> &nbsp;Weather Info</h3>
         <p className='summary'>{infoSummary}</p>
