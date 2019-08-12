@@ -1,0 +1,50 @@
+.sun {
+    height: auto;
+    padding: 20px 40px 20px 40px;
+    overflow: hidden;
+
+    h3 {
+        font-family: 'Lato', sans-serif;
+    }
+
+    .sunrise, .sunset {
+        float: left;
+        width: 100%;
+
+        span {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 100;
+            font-size: 0.9em;
+            padding: 0 0 0 20px;
+        }
+    }
+}
+
+// Large devices (Desktops, 1200px and up)
+@media only screen and (min-width: 1400px) {
+    .sun {
+        .sunrise, .sunset {
+            float: left;
+            width: 50%;
+
+            span {
+                font-weight: 100;
+                padding: 0 0 0 20px;
+            }
+        }
+    }
+}
+
+//Specific devices (Between 600-1200px)
+@media only screen and (min-width: 600px) and (max-width: 1400px) {
+    .sun {
+        .sunrise, .sunset {
+            width: 100%;
+
+            span {
+                font-weight: 100;
+                padding: 0 0 0 20px;
+            }
+        }
+    }
+}

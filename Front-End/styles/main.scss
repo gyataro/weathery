@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap');
 
-@import './hero.scss';
-@import './info.scss';
-@import './weekly.scss';
-@import './search.scss';
+@import './weather/hero.scss';
+@import './weather/info.scss';
+@import './weather/weekly.scss';
+@import './weather/search.scss';
+@import './weather/sun.scss';
+@import './weather/uv.scss';
 @import './settings.scss';
 
 /* https://coolors.co/73fbd3-44e5e7-59d2fe-4a8fe7-5c7aff */
@@ -19,6 +21,12 @@
 
     --temp-high: red;
     --temp-low: blue;
+
+    --uv-low: green;
+    --uv-moderate: yellow;
+    --uv-high: orange;
+    --uv-vhigh: red;
+    --uv-extreme: purple; 
 }
 
 [data-theme="dark"] {
@@ -45,6 +53,10 @@
 
 #show {
     display: block;
+}
+
+.spacing {
+    height: 1px;
 }
 
 .navbar {

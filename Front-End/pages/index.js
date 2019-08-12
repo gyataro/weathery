@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 import Layout from '../components/Layout.js';
-import WeatherHero from '../components/WeatherHero.js';
-import WeatherInfo from '../components/WeatherInfo.js';
-import WeatherWeekly from '../components/WeatherWeekly.js';
-import WeatherSearch from '../components/WeatherSearch.js';
+import WeatherHero from '../components/weather/WeatherHero.js';
+import DashboardLeft from '../components/DashboardLeft';
+import DashboardRight from '../components/DashboardRight.js';
+import WeatherSearch from '../components/weather/WeatherSearch.js';
 
 //CSS file
 import "../styles/main.scss";
@@ -31,6 +31,7 @@ class Dashboard extends Component {
       weatherWeekly: '',
       weatherSunrise: '',
       weatherSunset: '',
+      weatherUV: -1,
       weatherTimezone: '',
       searchData: {},
 
@@ -71,6 +72,7 @@ class Dashboard extends Component {
           weatherSunset: res.data.weatherData.daily.data[1].sunsetTime*1000,
           weatherCurrently: res.data.weatherData.currently,
           weatherWeekly: res.data.weatherData.daily.data,
+          weatherUV: res.data.weatherData.currently.uvIndex,
           weatherTimezone: (!this.state.searchData.hasOwnProperty('hit'))? (
             res.data.weatherData.timezone
           ) : (
@@ -156,6 +158,7 @@ class Dashboard extends Component {
       weatherCurrently,
       weatherWeekly,
       weatherTimezone,
+      weatherUV
     } = this.state;
 
     return (loading) ? (
@@ -186,17 +189,18 @@ class Dashboard extends Component {
             currently={weatherCurrently}
             timezone={weatherTimezone}
           />
-          
-          <WeatherInfo 
+
+          <DashboardLeft
             currently={weatherCurrently}
             summary={weatherSummary}
           />
 
-          <WeatherWeekly
+          <DashboardRight
             date={currentDate}
             sunrise={weatherSunrise}
             sunset={weatherSunset}
             weekly={weatherWeekly} 
+            uv={weatherUV}
           />
           
           <div className='col-12'>

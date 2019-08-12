@@ -1,25 +1,19 @@
 //Icons display utility
-import WeatherIcon from '../utils/WeatherIcon';
-import Icon from '../utils/DisplayIcon';
+import WeatherIcon from '../../utils/WeatherIcon';
+import Icon from '../../utils/DisplayIcon';
 
 //Date name utility
-import * as WeatherDate from '../utils/WeatherDate';
+import * as WeatherDate from '../../utils/WeatherDate';
 
 export default function WeatherWeekly(props){
   const {
     date,
-    sunrise,
-    sunset,
     weekly
   } = props;
 
   //User settings
   const showWeekly = (localStorage.getItem('showWeekly') === 'true')? 'show': 'hidden';
-  const showSunTime = (localStorage.getItem('showSunTime') === 'true')? 'show': 'hidden';
   const isMetricTemp = (localStorage.getItem('isMetric') === 'true')? '°C' : '°F';
-
-  const infoSunrise = WeatherDate.getLocalTime(new Date(sunrise));
-  const infoSunset = WeatherDate.getLocalTime(new Date(sunset));
   const infoWeeklyTemp = [];
 
   //In the array, values for index 0, 1 are yesterday and today's weather, which isn't needed
@@ -46,31 +40,11 @@ export default function WeatherWeekly(props){
   }
 
   return (
-    <div className='col-5'>
-
-      <div className='card sun' id={showSunTime}>
-        <div className='sunrise'>
-          <h3><Icon class='' icon='sunrise' /> &nbsp;Sunrise: 
-            <span>{infoSunrise}</span>
-          </h3>
-        </div>
-
-        <div className='sunset'>
-          <h3><Icon class='' icon='sunset' /> &nbsp;Sunset: 
-            <span>{infoSunset}</span>
-          </h3>
-        </div>
-      </div>
-
-      <div className='spacing'></div>
-
       <div className='card weekly' id={showWeekly}>
         <h3><Icon className='' icon='weekly' /> &nbsp;Weekly Forecast</h3>
         <div className="flex-container">
           {weeklyElements}
         </div>  
       </div>
-
-    </div>
   )
 }

@@ -1,6 +1,3 @@
-//Icons display utility
-import Icon from '../utils/DisplayIcon';
-
 import React from 'react';
 import AlgoliaPlaces from 'algolia-places-react';
 

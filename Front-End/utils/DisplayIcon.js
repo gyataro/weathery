@@ -18,8 +18,13 @@ import {
 
     //Weekly panel
     faCalendarWeek,
+
+    //Sunrise / sunset panel
     faSun,
     faMoon,
+
+    //UV Index panel
+    faUmbrellaBeach,
 
     //Error icon
     faExclamationTriangle,
@@ -32,9 +37,14 @@ import {
   export default function WeatherIcon(props){
 
     const displayIcons = {
-        //Weekly icon
+        //UV index panel
+        'uv': faUmbrellaBeach,
+        
+        //Sunrise / sunset icon
         'sunrise': faSun,
         'sunset': faMoon,
+
+        //Weekly icon
         'weekly': faCalendarWeek,
 
         //Error icon

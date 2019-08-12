@@ -1,8 +1,8 @@
 //Icons display utility
-import WeatherIcon from '../utils/WeatherIcon';
+import WeatherIcon from '../../utils/WeatherIcon';
 
 //Date name utility
-import * as WeatherDate from '../utils/WeatherDate';
+import * as WeatherDate from '../../utils/WeatherDate';
 
 export default function WeatherHero(props){
 
