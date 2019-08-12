@@ -163,7 +163,7 @@ class Dashboard extends Component {
 
     return (loading) ? (
       <Layout>
-        <div className='container'>
+        <div className='container loading'>
           <WeatherSearch 
             searchCallback={this.searchCallback}
           />
@@ -202,12 +202,8 @@ class Dashboard extends Component {
             weekly={weatherWeekly} 
             uv={weatherUV}
           />
-          
-          <div className='col-12'>
-            <div className='card'>
-            </div>
-          </div>
         </div>
+        
       </Layout>
     );
   };

@@ -21,12 +21,6 @@
 
     --temp-high: red;
     --temp-low: blue;
-
-    --uv-low: green;
-    --uv-moderate: yellow;
-    --uv-high: orange;
-    --uv-vhigh: red;
-    --uv-extreme: purple; 
 }
 
 [data-theme="dark"] {
@@ -47,6 +41,10 @@
     text-align: center;
 }
 
+html {
+    height: 100%;
+}
+
 #hidden {
     display: none;
 }
@@ -60,6 +58,7 @@
 }
 
 .navbar {
+    margin-bottom: 30px;
     ul {
         list-style-type: none;
         margin: 0;
@@ -86,6 +85,18 @@
     }
 }
 
+.footer{
+    background-color: var(--primary-color); 
+    margin-top: 80px;
+    height: auto;
+    p {
+        color: white;
+        font-family: 'Lato', sans-serif;
+        text-align: center;
+        font-size: 1em;
+    }
+}
+
 body {
     height: 100vh;
     margin: 0;
@@ -95,10 +106,20 @@ body {
     background-size: cover;
 }
 
+.app {
+    height: 100%;
+    display: flex; 
+    flex-direction: column; 
+}
+
 .container {
     width: 95%;
     margin: auto;
     padding-top: 30px;
+}
+
+.loading {
+    height: 100vh;
 }
     
 .card {
