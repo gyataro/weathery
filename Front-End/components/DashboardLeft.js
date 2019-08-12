@@ -1,4 +1,5 @@
 import WeatherInfo from '../components/weather/WeatherInfo.js';
+import WeatherLife from '../components/weather/WeatherLife.js';
 
 const DashboardLeft = (props) => {
     const {
@@ -11,6 +12,12 @@ const DashboardLeft = (props) => {
             <WeatherInfo 
                 currently={currently}
                 summary={summary}
+            />
+
+            <div className='spacing' />
+
+            <WeatherLife
+                currently={currently}
             />
         </div>
     )

@@ -26,6 +26,15 @@ import {
     //UV Index panel
     faUmbrellaBeach,
 
+    //Life Index panel
+    faCompass,
+    faCar,
+    faRunning,
+    faBiking,
+    faSwimmer,
+    faFish,
+    faHiking,
+
     //Error icon
     faExclamationTriangle,
 
@@ -39,6 +48,15 @@ import {
     const displayIcons = {
         //UV index panel
         'uv': faUmbrellaBeach,
+
+        //;ife index panel
+        'life': faCompass,
+        'driving': faCar,
+        'running': faRunning,
+        'biking': faBiking,
+        'swimming': faSwimmer,
+        'fishing': faFish,
+        'hiking': faHiking,
         
         //Sunrise / sunset icon
         'sunrise': faSun,
