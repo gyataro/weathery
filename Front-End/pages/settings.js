@@ -19,7 +19,6 @@ class Settings extends Component {
       showInfo: true,
       showSunTime: true,
       showWeekly: true,
-      showGraph: false,
       showUV: false,
       showLife: false
     };
@@ -151,14 +150,6 @@ class Settings extends Component {
                   </div>
                   <div className='container-30'>
                     <Toggle id='showWeekly' checked={this.state.showWeekly} settingsChangeCallback={this.settingsChangeCallback} />
-                  </div>
-                </li>
-                <li>
-                  <div className='container-70'>
-                    Show graphical data
-                  </div>
-                  <div className='container-30'>
-                    <Toggle id='showGraph' checked={this.state.showGraph} settingsChangeCallback={this.settingsChangeCallback} />
                   </div>
                 </li>
                 <li>

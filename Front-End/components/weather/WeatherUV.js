@@ -7,7 +7,7 @@ export default function WeatherSun(props){
 	} = props;
 
     const showUV = (localStorage.getItem('showUV') === 'true')? 'show': 'hidden';
-    const uvIndex = (uv > 0)? uv : 'N/A';
+    const uvIndex = (uv > 0)? uv : '0';
 
     let indicatorValue = 'i0';
     let uvTitle = 'No data available, please try again later';
@@ -42,8 +42,6 @@ export default function WeatherSun(props){
         default:
             break;
     }
-
-    console.log(indicatorValue)
 	
     return(
 		<div className='card uv' id={showUV}>
