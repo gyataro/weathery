@@ -1,9 +1,11 @@
 import Icon from '../../utils/DisplayIcon';
 
+import Translate from '../../utils/Translate';
+
 //Date name utility
 import * as WeatherDate from '../../utils/WeatherDate';
 
-export default function WeatherSun(props){
+function WeatherSun(props){
 
 	const {
 		sunrise,
@@ -17,16 +19,25 @@ export default function WeatherSun(props){
   return(
 		<div className='card sun' id={showSunTime}>
 			<div className='sunrise'>
-				<h3><Icon class='' icon='sunrise' /> &nbsp;Sunrise: 
+				<h3><Icon class='' icon='sunrise' /> &nbsp;{props.strings.sunrise}: 
 					<span>{infoSunrise}</span>
 				</h3>
 			</div>
 
 			<div className='sunset'>
-				<h3><Icon class='' icon='sunset' /> &nbsp;Sunset: 
+				<h3><Icon class='' icon='sunset' /> &nbsp;{props.strings.sunset}: 
 					<span>{infoSunset}</span>
 				</h3>
 			</div>
 		</div>
   )
 }
+
+WeatherSun.defaultProps = {
+	strings: {
+		sunrise: 'Sunrise',
+        sunset: 'Sunset'
+	}
+}
+
+export default Translate('WeatherSun')(WeatherSun)

@@ -51,7 +51,8 @@ class Dashboard extends Component {
 
   getWeather = (lat, long) => {
     let isMetricUnits = (localStorage.getItem('isMetric') === 'true')? 'si' : 'us';
-    let weatherUrl = ''.concat('https://api-weathery.herokuapp.com/weather?lat=', lat, '&long=', long, '&units=', isMetricUnits);
+    let isLanguage = localStorage.getItem('isLanguage');
+    let weatherUrl = ''.concat('https://api-weathery.herokuapp.com/weather?lat=', lat, '&long=', long, '&units=', isMetricUnits, '&lang=', isLanguage);
     axios({
       method: 'get',
       url: weatherUrl,

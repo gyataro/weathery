@@ -1,6 +1,9 @@
 import Icon from '../../utils/DisplayIcon';
 
-export default function WeatherLife(props){
+import Translate from '../../utils/Translate';
+
+function WeatherLife(props){
+	console.log(props);
 	const {
 		currently
 	} = props;
@@ -26,43 +29,59 @@ export default function WeatherLife(props){
 	} 
 
 	const showLife = (localStorage.getItem('showLife') === 'true')? 'show': 'hidden';
-	const drivingIndex = (currently.visibility >= conditionMap[isMetric].driving)? 'Good' : 'Poor';
-	const runningIndex = (currently.temperature < conditionMap[isMetric].running)? 'Good' : 'Poor';
-	const bikingIndex = (currently.temperature < conditionMap[isMetric].biking)? 'Good' : 'Poor';
-	const swimmingIndex = (currently.temperature < conditionMap[isMetric].swimming)? 'Good' : 'Poor';
-	const fishingIndex = (currently.windSpeed < conditionMap[isMetric].fishing)? 'Good' : 'Poor';
-	const hikingIndex = (currently.precipProbability < conditionMap[isMetric].hiking)? 'Good' : 'Poor';
+	const drivingIndex = (currently.visibility >= conditionMap[isMetric].driving)? props.strings.good : props.strings.poor;
+	const runningIndex = (currently.temperature < conditionMap[isMetric].running)? props.strings.good : props.strings.poor;
+	const bikingIndex = (currently.temperature < conditionMap[isMetric].biking)? props.strings.good : props.strings.poor;
+	const swimmingIndex = (currently.temperature < conditionMap[isMetric].swimming)? props.strings.good : props.strings.poor;
+	const fishingIndex = (currently.windSpeed < conditionMap[isMetric].fishing)? props.strings.good : props.strings.poor;
+	const hikingIndex = (currently.precipProbability < conditionMap[isMetric].hiking)? props.strings.good : props.strings.poor;
 
 	return(
 		<div className='card info' id={showLife}>
-			<h3><Icon className='' icon='life' /> &nbsp;Life Index</h3>
+			<h3><Icon className='' icon='life' /> &nbsp;{props.strings.title}</h3>
 			<p className='summary'></p>
 			<div className="flex-container">
 				<div className='flex-item'>
-					<p className='title'><Icon class='' icon='driving' /> &nbsp;Driving</p>
+					<p className='title'><Icon class='' icon='driving' /> &nbsp;{props.strings.driving}</p>
 					<p className='desc'>{drivingIndex}</p>
 				</div>
 				<div className='flex-item'>
-					<p className='title'><Icon className='' icon='running' /> &nbsp;Running</p>
+					<p className='title'><Icon className='' icon='running' /> &nbsp;{props.strings.running}</p>
 					<p className='desc'>{runningIndex}</p>
 				</div>
 				<div className='flex-item'>
-					<p className='title'><Icon class='' icon='biking' /> &nbsp;Biking</p>
+					<p className='title'><Icon class='' icon='biking' /> &nbsp;{props.strings.biking}</p>
 					<p className='desc'>{bikingIndex}</p>
 				</div>
 				<div className='flex-item'>
-					<p className='title'><Icon class='' icon='swimming' /> &nbsp;Swimming</p>
+					<p className='title'><Icon class='' icon='swimming' /> &nbsp;{props.strings.swimming}</p>
 					<p className='desc'>{swimmingIndex}</p>
 				</div>
 				<div className='flex-item'>
-					<p className='title'><Icon class='' icon='fishing' /> &nbsp;Fishing</p>
+					<p className='title'><Icon class='' icon='fishing' /> &nbsp;{props.strings.fishing}</p>
 					<p className='desc'>{fishingIndex}</p>
 				</div>
 				<div className='flex-item'>
-					<p className='title'><Icon class='' icon='hiking' /> &nbsp;Hiking</p>
+					<p className='title'><Icon class='' icon='hiking' /> &nbsp;{props.strings.hiking}</p>
 					<p className='desc'>{hikingIndex}</p>
 				</div>
 			</div>
 		</div>
 	)
 }
+
+WeatherLife.defaultProps = {
+	strings: {
+		title: 'Life Index',
+		poor: 'Poor',
+		good: 'Good',
+        driving: 'Driving',
+        running: 'Running',
+        biking: 'Biking',
+        swimming: 'Swimming',
+        fishing: 'Fishing',
+        hiking: 'Hiking'
+	}
+}
+
+export default Translate('WeatherLife')(WeatherLife)

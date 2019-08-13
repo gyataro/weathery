@@ -1,7 +1,9 @@
 //Icon display utility
 import Icon from '../../utils/DisplayIcon';
 
-export default function WeatherInfo(props){
+import Translate from '../../utils/Translate';
+
+function WeatherInfo(props){
 
   const {
     currently,
@@ -24,34 +26,48 @@ export default function WeatherInfo(props){
 
   return(
     <div className='card info' id={showInfo}>
-      <h3><Icon className='' icon='info' /> &nbsp;Weather Info</h3>
+      <h3><Icon className='' icon='info' /> &nbsp;{props.strings.title}</h3>
       <p className='summary'>{infoSummary}</p>
       <div className="flex-container">
         <div className='flex-item'>
-          <p className='title'><Icon class='' icon='feelsLike' /> &nbsp;Feels-like</p>
+          <p className='title'><Icon class='' icon='feelsLike' /> &nbsp;{props.strings.feelsLike}</p>
           <p className='desc'>{infoApparentTemperature}</p>
         </div>
         <div className='flex-item'>
-          <p className='title'><Icon className='' icon='humidity' /> &nbsp;Humidity</p>
+          <p className='title'><Icon className='' icon='humidity' /> &nbsp;{props.strings.humidity}</p>
           <p className='desc'>{infoHumidity}</p>
         </div>
         <div className='flex-item'>
-          <p className='title'><Icon class='' icon='pressure' /> &nbsp;Pressure</p>
+          <p className='title'><Icon class='' icon='pressure' /> &nbsp;{props.strings.pressure}</p>
           <p className='desc'>{infoPressure}</p>
         </div>
         <div className='flex-item'>
-          <p className='title'><Icon class='' icon='dewPoint' /> &nbsp;Dew Point</p>
+          <p className='title'><Icon class='' icon='dewPoint' /> &nbsp;{props.strings.dewPoint}</p>
           <p className='desc'>{infoDewPoint}</p>
         </div>
         <div className='flex-item'>
-          <p className='title'><Icon class='' icon='windSpeed' /> &nbsp;Wind Speed</p>
+          <p className='title'><Icon class='' icon='windSpeed' /> &nbsp;{props.strings.windSpeed}</p>
           <p className='desc'>{infoWindSpeed}</p>
         </div>
         <div className='flex-item'>
-          <p className='title'><Icon class='' icon='visibility' /> &nbsp;Visibility</p>
+          <p className='title'><Icon class='' icon='visibility' /> &nbsp;{props.strings.visibility}</p>
           <p className='desc'>{infoVisibility}</p>
         </div>
       </div>
     </div>
   )
 }
+
+WeatherInfo.defaultProps = {
+  strings: {
+    title: 'Weather Info',
+    feelsLike: 'Feels-like',
+    humidity: 'Humidity',
+    pressure: 'Pressure',
+    dewPoint: 'Dew Point',
+    windSpeed: 'Wind Speed',
+    visibility: 'Visibility'
+  }
+}
+
+export default Translate('WeatherInfo')(WeatherInfo)

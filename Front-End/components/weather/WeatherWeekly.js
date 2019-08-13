@@ -5,7 +5,9 @@ import Icon from '../../utils/DisplayIcon';
 //Date name utility
 import * as WeatherDate from '../../utils/WeatherDate';
 
-export default function WeatherWeekly(props){
+import Translate from '../../utils/Translate';
+
+function WeatherWeekly(props){
   const {
     date,
     weekly
@@ -41,10 +43,18 @@ export default function WeatherWeekly(props){
 
   return (
       <div className='card weekly' id={showWeekly}>
-        <h3><Icon className='' icon='weekly' /> &nbsp;Weekly Forecast</h3>
+        <h3><Icon className='' icon='weekly' /> &nbsp;{props.strings.title}</h3>
         <div className="flex-container">
           {weeklyElements}
         </div>  
       </div>
   )
 }
+
+WeatherWeekly.defaultProps = {
+  strings: {
+    title: 'Weekly Forecase'
+  }
+}
+
+export default Translate('WeatherWeekly')(WeatherWeekly)

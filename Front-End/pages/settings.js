@@ -4,6 +4,8 @@ import Icon from '../utils/DisplayIcon';
 import React, { Component } from "react";
 import Toggle from '../utils/Toggle';
 
+import Translate from '../utils/Translate';
+
 //CSS file
 import "../styles/main.scss";
 
@@ -70,8 +72,8 @@ class Settings extends Component {
         document.documentElement.setAttribute('data-theme', 'light');
       }
     }
-    const languages = ['en', 'es', 'zh', 'zh-tw', 'ja', 'ko', 'id'];
-    const languageFull = ['English', 'Español', '简体中文', '繁體中文', '日本語', '한국어', 'Bahasa Melayu']
+    const languages = ['en', 'es', 'zh', 'ja', 'id'];
+    const languageFull = ['English', 'Español', '简体中文', '日本語', 'Bahasa Melayu']
     const languageSelection = [];
     for(let i = 0; i < languages.length; i++){
       languageSelection.push(
@@ -84,11 +86,11 @@ class Settings extends Component {
           <h1 id='settings-title'><Icon class='' icon='settings' />&nbsp;&nbsp;Settings</h1>
           <div className='col-12'>
             <div className='card settings'>
-              <h3>General</h3>
+              <h3>{this.props.strings.general.title}</h3>
               <ul>
                 <li>
                   <div className='container-70'>
-                    Use metric units (celsius)
+                    {this.props.strings.general.metricTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='isMetric' checked={this.state.isMetric} settingsChangeCallback={this.settingsChangeCallback} />
@@ -96,7 +98,7 @@ class Settings extends Component {
                 </li>
                 <li>
                   <div className='container-70'>
-                    Language
+                    {this.props.strings.general.languageTitle}
                   </div>
                   <div className='container-30'>
                     <select value={this.state.isLanguage} onChange={this.settingsDropdownChange}>
@@ -110,11 +112,11 @@ class Settings extends Component {
 
           <div className='col-12'>
             <div className='card settings'>
-              <h3>Appearance</h3>
+              <h3>{this.props.strings.appearance.title}</h3>
               <ul>
                 <li>
                   <div className='container-70'>
-                    Toggle dark mode
+                    {this.props.strings.appearance.darkTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='isDark' checked={this.state.isDark} settingsChangeCallback={this.settingsChangeCallback} />
@@ -126,11 +128,11 @@ class Settings extends Component {
 
           <div className='col-12'>
             <div className='card settings'>
-              <h3>Panels</h3>
+              <h3>{this.props.strings.panels.title}</h3>
               <ul>
                 <li>
                   <div className='container-70'>
-                    Show more weather info
+                    {this.props.strings.panels.infoTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='showInfo' checked={this.state.showInfo} settingsChangeCallback={this.settingsChangeCallback} />
@@ -138,7 +140,7 @@ class Settings extends Component {
                 </li>
                 <li>
                   <div className='container-70'>
-                    Show sunrise / sunset time
+                    {this.props.strings.panels.sunTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='showSunTime' checked={this.state.showSunTime} settingsChangeCallback={this.settingsChangeCallback} />
@@ -146,7 +148,7 @@ class Settings extends Component {
                 </li>
                 <li>
                   <div className='container-70'>
-                    Show weekly info
+                    {this.props.strings.panels.weeklyTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='showWeekly' checked={this.state.showWeekly} settingsChangeCallback={this.settingsChangeCallback} />
@@ -154,7 +156,7 @@ class Settings extends Component {
                 </li>
                 <li>
                   <div className='container-70'>
-                    Show UV warning
+                    {this.props.strings.panels.UVTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='showUV' checked={this.state.showUV} settingsChangeCallback={this.settingsChangeCallback} />
@@ -162,7 +164,7 @@ class Settings extends Component {
                 </li>
                 <li>
                   <div className='container-70'>
-                    Show life index
+                    {this.props.strings.panels.lifeTitle}
                   </div>
                   <div className='container-30'>
                     <Toggle id='showLife' checked={this.state.showLife} settingsChangeCallback={this.settingsChangeCallback} />
@@ -178,4 +180,29 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+//Default language text
+Settings.defaultProps = {
+  strings: {
+    general: {
+      title: 'General',
+      metricTitle: 'Use metric units (celsius)',
+      languageTitle: 'Language'
+    },
+
+    appearance: {
+      title: 'Appearance',
+      darkTitle: 'Toggle dark mode'
+    },
+
+    panels: {
+      title: 'Panels',
+      infoTitle: 'Show more weather info',
+      sunTitle: 'Show sunrise / sunset time',
+      weeklyTitle: 'Show weekly info',
+      UVTitle: 'Show UV warning',
+      lifeTitle: 'Show life index'
+    }
+  }
+};
+
+export default Translate('Settings')(Settings);
