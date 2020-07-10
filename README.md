@@ -1,5 +1,7 @@
 # Weathery
-![Imgur](https://i.imgur.com/aZCwfr5.png)
+
+
+ <img width="515" src="https://i.imgur.com/aZCwfr5.png0">
 
 ![Netlify](https://img.shields.io/netlify/d81d0a81-6c64-46c3-8d58-9cf7d7de8cf6) 
 ![node-current](https://img.shields.io/node/v/next)
@@ -8,8 +10,10 @@
 
 Weathery is a geolocation enabled, multiplatform, offline-storage, Nextjs & Node.js powered weather prediction service with user experience in mind.
 
+
 # Active Deployment
 https://client-weathery.netlify.app/
+
 
 # Features
 
@@ -19,6 +23,7 @@ https://client-weathery.netlify.app/
   - Comprehensive weather data with informative suggestions
   - Dark & light theme
   - Customisable panels
+  
 
 # Tech
 
@@ -36,7 +41,7 @@ Frontend Host: [Netlify](https://www.netlify.com/)
 
 I separate frontend and backend mainly because of scalability & modularity 
 
+
 # License
-----
 
 MIT
