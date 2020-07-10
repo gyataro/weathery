@@ -36,7 +36,7 @@ Frontend Host: [Netlify](https://www.netlify.com/)
 
 I separate frontend and backend mainly because of scalability & modularity 
 
-License
+# License
 ----
 
 MIT
