@@ -1,6 +1,5 @@
 # Weathery
-
-
+ 
  <img width="515" src="https://i.imgur.com/aZCwfr5.png0">
 
 ![Netlify](https://img.shields.io/netlify/d81d0a81-6c64-46c3-8d58-9cf7d7de8cf6) 
@@ -15,6 +14,10 @@ Weathery is a geolocation enabled, multiplatform, offline-storage, Nextjs & Node
 https://client-weathery.netlify.app/
 
 
+# Gallery
+<img width="50%" src="https://i.imgur.com/JiMUnre.png"> <img width="50%" src="https://i.imgur.com/2tAmOZZ.png">
+
+
 # Features
 
   - Multilanguage support
@@ -23,9 +26,9 @@ https://client-weathery.netlify.app/
   - Comprehensive weather data with informative suggestions
   - Dark & light theme
   - Customisable panels
-  
 
 # Tech
+
 
 Weathery uses a number of open source projects to run smoothly:
 
