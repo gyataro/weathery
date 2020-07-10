@@ -20,7 +20,7 @@ https://client-weathery.netlify.app/
   - Dark & light theme
   - Customisable panels
 
-### Tech
+# Tech
 
 Weathery uses a number of open source projects to run smoothly:
 
@@ -30,8 +30,10 @@ Weathery uses a number of open source projects to run smoothly:
 * [DarkSky](https://darksky.net/dev) - weather prediction API
 * [Algolia](https://www.algolia.com/) - location service API
 
-> Backend Host: [Heroku](https://www.heroku.com/)
-> Frontend Host: [Netlify](https://www.netlify.com/)
+Backend Host: [Heroku](https://www.heroku.com/)
+
+Frontend Host: [Netlify](https://www.netlify.com/)
+
 I separate frontend and backend mainly because of scalability & modularity 
 
 License
