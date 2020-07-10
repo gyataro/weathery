@@ -33,8 +33,8 @@ https://client-weathery.netlify.app/
 Weathery uses a number of open source projects to run smoothly:
 
 * [Next.js](https://nextjs.org/) - A React frontend framework
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework
+* [node.js](https://nodejs.org/) - evented I/O for the backend
+* [Express](https://expressjs.com/) - fast node.js network app framework
 * [DarkSky](https://darksky.net/dev) - weather prediction API
 * [Algolia](https://www.algolia.com/) - location service API
 
@@ -48,3 +48,6 @@ I separate frontend and backend mainly because of scalability & modularity
 # License
 
 MIT
+
+---
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Gern-Yataro/) [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com)
