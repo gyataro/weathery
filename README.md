@@ -2,6 +2,7 @@
  
  <img width="515" src="https://i.imgur.com/aZCwfr5.png0">
 
+[![Build Status](https://travis-ci.com/Gern-Yataro/Weathery-Weather-App.svg?branch=master)](https://travis-ci.com/Gern-Yataro/Weathery-Weather-App)
 ![Netlify](https://img.shields.io/netlify/d81d0a81-6c64-46c3-8d58-9cf7d7de8cf6) 
 [![Heroku](https://img.shields.io/badge/heroku-deployed-brightgreen)](https://api-weathery.herokuapp.com/weather)
 ![node-current](https://img.shields.io/node/v/next)
