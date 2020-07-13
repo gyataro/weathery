@@ -12,7 +12,7 @@
 Weathery is a geolocation enabled, multiplatform, offline-storage, Nextjs & Node.js powered weather prediction service with user experience in mind.
 
 
-# Active Deployment
+# Live Deployment
 https://client-weathery.netlify.app/
 
 
