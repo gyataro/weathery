@@ -1,4 +1,5 @@
 # Weathery
+ As of 2022, DarkSky API is deprecated, this repository is no longer maintained.
  
  <img width="515" src="https://i.imgur.com/aZCwfr5.png0">
 
